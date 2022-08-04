@@ -1,0 +1,17 @@
+# Image optimizer script
+IMGOPT ()
+{
+	mogrify -format jpg $HOME/Immagini/*.png;
+	rm /home/debuser/Immagini/*.png;
+	mogrify -resize 40% $HOME/Immagini/*.jpg;
+	exiftool -overwrite_original -all=$HOME/Immagini/*;
+}
+
+# Check if apps are running on root priv
+SUIDCHK () 
+{ 
+    while true; do
+        ps -U debuser -o user,uid,ruid,args | awk '{ if ( $2 != $3 ) print $4 }';
+        sleep 2;
+    done
+}
