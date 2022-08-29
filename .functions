@@ -15,3 +15,18 @@ SUIDCHK ()
         sleep 2;
     done
 }
+
+WORDCLOUD ()
+{
+    wordcloud_cli --text text.txt --imagefile wordcloud.png --width 1920 --height 1080
+}
+
+# requires streamlink installed
+TWITCH ()
+{
+    PS3="Scegli la stream da aprire: ";
+    select stream in parliamodivg kilnier larae cantact sabaku_no_sutoriimaa oldgenprojec>
+    do
+        streamlink --twitch-disable-hosting --twitch-disable-ads --twitch-disable-reruns >
+    done
+}
