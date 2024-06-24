@@ -2,7 +2,7 @@
 IMGOPT ()
 {
 	mogrify -format jpg $HOME/Immagini/*.png;
-	rm /home/debuser/Immagini/*.png;
+	rm /home/$USER/Immagini/*.png;
 	mogrify -resize 40% $HOME/Immagini/*.jpg;
 	exiftool -overwrite_original -all=$HOME/Immagini/*;
 }
@@ -11,7 +11,7 @@ IMGOPT ()
 SUIDCHK () 
 { 
     while true; do
-        ps -U debuser -o user,uid,ruid,args | awk '{ if ( $2 != $3 ) print $4 }';
+        ps -U $USER -o user,uid,ruid,args | awk '{ if ( $2 != $3 ) print $4 }';
         sleep 2;
     done
 }
